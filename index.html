@@ -3,6 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- GitHub Pages project sites live under /repo-name/; without a base href, poster/foo.png resolves to github.io/poster/foo.png (404). -->
+    <script>
+      (function () {
+        if (!/^https?:$/i.test(location.protocol)) return;
+        var p = location.pathname;
+        var basePath;
+        if (p.endsWith("/")) {
+          basePath = p;
+        } else if (/\.html?$/i.test(p)) {
+          basePath = p.replace(/\/[^/]+$/, "/");
+        } else {
+          basePath = p + "/";
+        }
+        if (basePath !== "/") {
+          var b = document.createElement("base");
+          b.href = basePath;
+          document.head.insertBefore(b, document.head.firstChild);
+        }
+      })();
+    </script>
     <meta
       name="description"
       content="3A's — Graphic & digital design portfolio by Amir Asyraaf Aiman. Multimedia computing graduate: branding, web UI, infographics, 3D, print, and apparel."

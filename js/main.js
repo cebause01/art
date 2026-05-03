@@ -38,10 +38,18 @@
   var lbBackdrop = lightbox.querySelector("[data-lightbox-close]");
   var triggerEl = null;
 
+  function resolveUrl(url) {
+    try {
+      return new URL(url, document.baseURI).href;
+    } catch (e) {
+      return url;
+    }
+  }
+
   function openLightbox(src, altText) {
     if (!lbImg) return;
     triggerEl = document.activeElement;
-    lbImg.src = src;
+    lbImg.src = resolveUrl(src);
     lbImg.alt = altText || "";
     lightbox.removeAttribute("hidden");
     document.body.classList.add("lightbox-open");
@@ -68,7 +76,7 @@
     if (!link || !work.contains(link)) return;
     e.preventDefault();
     var thumb = link.querySelector("img");
-    openLightbox(link.getAttribute("href"), thumb ? thumb.getAttribute("alt") : "");
+    openLightbox(link.href, thumb ? thumb.getAttribute("alt") : "");
   });
 
   if (lbClose) {
