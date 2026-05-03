@@ -41,7 +41,9 @@
 
     <header class="site-header">
       <div class="site-header__inner">
-        <a class="logo" href="#">3A's<span class="logo__year">Portfolio</span></a>
+        <a class="logo logo--mono" href="#" aria-label="AAA Portfolio home">
+          <span class="logo__glyph" aria-hidden="true">AAA</span>
+        </a>
         <button
           class="nav-toggle"
           type="button"
@@ -82,25 +84,23 @@
                 <a class="btn btn--primary" href="#work">View selected work</a>
                 <a class="btn btn--ghost" href="#contact">Contact</a>
               </div>
-              <ul class="hero__tags" aria-label="Focus areas">
-                <li>Brand &amp; layout</li>
-                <li>Web &amp; UI</li>
-                <li>Print &amp; campaigns</li>
-                <li>3D &amp; apparel</li>
+              <ul class="hero__tags" aria-label="Jump to portfolio categories">
+                <li><a class="hero__tag-link" href="#posters">Brand &amp; layout</a></li>
+                <li><a class="hero__tag-link" href="#websites">Web &amp; UI</a></li>
+                <li><a class="hero__tag-link" href="#banners">Print &amp; campaigns</a></li>
+                <li><a class="hero__tag-link" href="#three-d">3D &amp; apparel</a></li>
               </ul>
             </div>
             <figure class="hero__figure">
-              <div class="hero__frame">
-                <img
-                  src="personal-picture.png"
-                  alt="Amir Asyraaf Aiman"
-                  width="720"
-                  height="900"
-                  class="hero__portrait"
-                  loading="eager"
-                  decoding="async"
-                />
-              </div>
+              <img
+                src="personal-picture.png"
+                alt="Amir Asyraaf Aiman"
+                width="473"
+                height="679"
+                class="hero__portrait"
+                loading="eager"
+                decoding="async"
+              />
               <figcaption class="visually-hidden">Portrait photograph</figcaption>
             </figure>
           </div>
@@ -135,23 +135,50 @@
           </p>
         </div>
 
-        <nav class="work-jump" aria-label="Jump to a project group">
-          <ul class="work-jump__list">
-            <li><a href="#posters">Posters</a></li>
-            <li><a href="#banners">Banner</a></li>
-            <li><a href="#infographics">Infographics</a></li>
-            <li><a href="#websites">Web</a></li>
-            <li><a href="#three-d">3D</a></li>
-            <li><a href="#apparel">Apparel</a></li>
+        <nav class="work-jump" aria-label="Filter portfolio by category">
+          <ul class="work-jump__list" role="tablist">
+            <li role="presentation">
+              <button type="button" class="work-jump__tab is-active" data-filter="all" aria-pressed="true" role="tab">
+                All
+              </button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="posters" aria-pressed="false" role="tab">Posters</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="banners" aria-pressed="false" role="tab">Banner</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="infographics" aria-pressed="false" role="tab">
+                Infographics
+              </button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="websites" aria-pressed="false" role="tab">Web</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="three-d" aria-pressed="false" role="tab">3D</button>
+            </li>
+            <li role="presentation">
+              <button type="button" class="work-jump__tab" data-filter="apparel" aria-pressed="false" role="tab">Apparel</button>
+            </li>
           </ul>
         </nav>
 
-        <article class="project-block" id="posters">
+        <div id="work-grid" class="work-grid">
+        <article class="project-block" id="posters" data-category="posters">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">01</span>
             <h3 class="project-block__title">Poster</h3>
             <p class="project-block__meta">Print &amp; layout</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">Poster &amp; print layouts</p>
+            <p class="project-context__client">Academic briefs &amp; campaign-style exercises</p>
+            <p class="project-context__outcome">
+              Strong hierarchy and typographic rhythm for events and messaging — built for both screen previews and print-ready export.
+            </p>
+          </div>
           <div class="project-block__main">
           <div class="gallery gallery--dense">
             <a class="gallery__item" href="poster/poster-01.png">
@@ -173,14 +200,21 @@
           </div>
         </article>
 
-        <article class="project-block" id="banners">
+        <article class="project-block" id="banners" data-category="banners">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">02</span>
             <h3 class="project-block__title">Banner</h3>
             <p class="project-block__meta">Campaign &amp; digital display</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">Sampul Raya banner</p>
+            <p class="project-context__client">Seasonal / festive visual</p>
+            <p class="project-context__outcome">
+              A wide-format banner treatment with clear focal hierarchy suited for social cover and display placements.
+            </p>
+          </div>
           <div class="project-block__main">
-          <div class="gallery">
+          <div class="gallery gallery--banner">
             <a class="gallery__item" href="banner/banner-01.png">
               <img src="banner/banner-01.png" alt="Banner design" loading="lazy" decoding="async" />
             </a>
@@ -188,12 +222,19 @@
           </div>
         </article>
 
-        <article class="project-block" id="infographics">
+        <article class="project-block" id="infographics" data-category="infographics">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">03</span>
             <h3 class="project-block__title">Infographic</h3>
             <p class="project-block__meta">Information design</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">KTSTAY &amp; data-forward layouts</p>
+            <p class="project-context__client">Information graphics brief</p>
+            <p class="project-context__outcome">
+              Charts, icons, and grid structure that make dense facts easier to scan without losing brand tone.
+            </p>
+          </div>
           <div class="project-block__main">
           <div class="gallery">
             <a class="gallery__item" href="infographic/infographic-01.png">
@@ -209,55 +250,82 @@
           </div>
         </article>
 
-        <article class="project-block" id="websites">
+        <article class="project-block" id="websites" data-category="websites">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">04</span>
             <h3 class="project-block__title">Web design</h3>
             <p class="project-block__meta">UI concepts &amp; site visuals</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">Web UI concepts</p>
+            <p class="project-context__client">Kilang Sublimation · OMAF</p>
+            <p class="project-context__outcome">
+              Page structure, hero treatments, and component rhythm explored as visual comps for service-led sites.
+            </p>
+          </div>
           <div class="project-block__main">
+            <div class="project-sub">
+              <h4 class="project-block__subtitle">Kilang sublimation</h4>
+              <div class="project-context project-context--inline">
+                <p class="project-context__name">Kilang Sublimation web concept</p>
+                <p class="project-context__client">Product / manufacturing context</p>
+                <p class="project-context__outcome">Landing-style layouts emphasizing offerings and trust cues for online enquiries.</p>
+              </div>
+              <div class="gallery gallery--web">
+                <a class="gallery__item" href="kilang-sublimation/kilang-01.png">
+                  <img
+                    src="kilang-sublimation/kilang-01.png"
+                    alt="Kilang sublimation website design"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+                <a class="gallery__item" href="kilang-sublimation/kilang-02.png">
+                  <img
+                    src="kilang-sublimation/kilang-02.png"
+                    alt="Kilang sublimation website design"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
+              </div>
+            </div>
 
-          <h4 class="project-block__subtitle">Kilang sublimation</h4>
-          <div class="gallery">
-            <a class="gallery__item" href="kilang-sublimation/kilang-01.png">
-              <img
-                src="kilang-sublimation/kilang-01.png"
-                alt="Kilang sublimation website design"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-            <a class="gallery__item" href="kilang-sublimation/kilang-02.png">
-              <img
-                src="kilang-sublimation/kilang-02.png"
-                alt="Kilang sublimation website design"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          </div>
-
-          <h4 class="project-block__subtitle">OMAF</h4>
-          <div class="gallery">
-            <a class="gallery__item" href="omaf-website/omaf-01.png">
-              <img src="omaf-website/omaf-01.png" alt="OMAF website design" loading="lazy" decoding="async" />
-            </a>
-            <a class="gallery__item" href="omaf-website/omaf-02.png">
-              <img src="omaf-website/omaf-02.png" alt="OMAF website design" loading="lazy" decoding="async" />
-            </a>
-            <a class="gallery__item" href="omaf-website/omaf-03.png">
-              <img src="omaf-website/omaf-03.png" alt="OMAF website design" loading="lazy" decoding="async" />
-            </a>
-          </div>
+            <div class="project-sub">
+              <h4 class="project-block__subtitle">OMAF</h4>
+              <div class="project-context project-context--inline">
+                <p class="project-context__name">OMAF site visuals</p>
+                <p class="project-context__client">Organization / event-facing UI</p>
+                <p class="project-context__outcome">Multiple states and sections showing navigation, content blocks, and consistent UI patterns.</p>
+              </div>
+              <div class="gallery gallery--web">
+                <a class="gallery__item" href="omaf-website/omaf-01.png">
+                  <img src="omaf-website/omaf-01.png" alt="OMAF website design" loading="lazy" decoding="async" />
+                </a>
+                <a class="gallery__item" href="omaf-website/omaf-02.png">
+                  <img src="omaf-website/omaf-02.png" alt="OMAF website design" loading="lazy" decoding="async" />
+                </a>
+                <a class="gallery__item" href="omaf-website/omaf-03.png">
+                  <img src="omaf-website/omaf-03.png" alt="OMAF website design" loading="lazy" decoding="async" />
+                </a>
+              </div>
+            </div>
           </div>
         </article>
 
-        <article class="project-block" id="three-d">
+        <article class="project-block" id="three-d" data-category="three-d">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">05</span>
             <h3 class="project-block__title">3D object</h3>
             <p class="project-block__meta">Product &amp; scene visuals</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">Blender object &amp; scene work</p>
+            <p class="project-context__client">Personal / coursework renders</p>
+            <p class="project-context__outcome">
+              Hard-surface modeling and lighting studies aimed at believable materials and clean presentation shots.
+            </p>
+          </div>
           <div class="project-block__main">
           <div class="gallery">
             <a class="gallery__item" href="3d-object/3d-01.png">
@@ -273,12 +341,19 @@
           </div>
         </article>
 
-        <article class="project-block" id="apparel">
+        <article class="project-block" id="apparel" data-category="apparel">
           <header class="project-block__head">
             <span class="project-block__index" aria-hidden="true">06</span>
             <h3 class="project-block__title">Shirts &amp; apparel</h3>
             <p class="project-block__meta">Print-ready graphics</p>
           </header>
+          <div class="project-context">
+            <p class="project-context__name">Jersey &amp; apparel graphics</p>
+            <p class="project-context__client">BUMIHAYAT Industries — branded apparel</p>
+            <p class="project-context__outcome">
+              Vector-ready marks and shirt mockups tuned for screen printing and consistent identity on garments.
+            </p>
+          </div>
           <div class="project-block__main">
           <div class="gallery gallery--dense">
             <a class="gallery__item" href="shirts/shirt-01.jpeg">
@@ -326,58 +401,103 @@
           </div>
           </div>
         </article>
+        </div>
       </section>
 
       <section id="about" class="about section section--about" aria-labelledby="about-title">
         <div class="about__inner">
-          <div class="about__intro">
+          <header class="about__intro">
             <p class="section__overline section__overline--dark">Profile</p>
             <h2 id="about-title" class="section__title">About</h2>
-            <blockquote class="about__pullquote">
-              <p>
-                Design that respects hierarchy, grid, and audience — whether it’s a landing page, a poster wall, or a
-                jersey graphic.
-              </p>
-            </blockquote>
-          </div>
+            <p class="about__intro-lead">
+              Graphic &amp; digital designer · Multimedia computing graduate — pairing craft with clear delivery.
+            </p>
+          </header>
           <div class="about__columns">
             <div class="about__col about__col--prose">
-              <div class="about__prose">
-                <p>
-                  Multimedia Computing graduate with a Bachelor’s and Diploma in Computer Science from Universiti
-                  Teknologi MARA. Comfortable across multimedia production, web design, data-informed decisions, and UI/UX
-                  thinking — useful when design needs to pair with real digital delivery.
-                </p>
-                <p>
-                  I’m motivated by teams that care about craft and clarity. I’m looking for an entry-level graphic design
-                  role where I can contribute to campaigns and brand systems while continuing to grow.
-                </p>
+              <div class="about__card">
+                <blockquote class="about__pullquote">
+                  <p>
+                    Design that respects hierarchy, grid, and audience — whether it’s a landing page, a poster wall, or a
+                    jersey graphic.
+                  </p>
+                </blockquote>
+                <div class="about__prose">
+                  <p>
+                    Bachelor of Computer Science (Hons.) in Multimedia Computing and a Diploma in Computer Science from
+                    Universiti Teknologi MARA (UiTM) — comfortable across graphic design, web UI, video, 3D, and
+                    data-informed work. I like projects where visual craft meets clear digital delivery.
+                  </p>
+                  <p>
+                    Currently designing for OMAF Apparel. Open to full-time graphic design roles and select freelance
+                    work.
+                  </p>
+                </div>
+                <div class="about__actions">
+                  <a
+                    class="btn btn--outline about__cv"
+                    href="cv.pdf"
+                    download="Amir-Asyraaf-Aiman-Resume.pdf"
+                  >Download resume (PDF)</a>
+                </div>
               </div>
             </div>
-            <aside class="about__col about__col--aside" aria-label="Skills and education">
-              <h3 class="about__subheading">Skills</h3>
-              <ul class="skill-list">
-                <li>Graphic design</li>
-                <li>Photography</li>
-                <li>Video editing</li>
-                <li>UI / UX awareness</li>
-                <li>Programming</li>
-              </ul>
-              <h3 class="about__subheading">Education</h3>
-              <ul class="education-list">
-                <li>
-                  <span class="education-list__years">2022–2024</span>
-                  <strong>Bachelor of Computer Science (Hons.), Multimedia Computing</strong>
-                  <span class="education-list__school">Universiti Teknologi MARA Kuala Terengganu</span>
-                  <span class="education-list__detail">CGPA: 3.26</span>
-                </li>
-                <li>
-                  <span class="education-list__years">2019–2022</span>
-                  <strong>Diploma in Computer Science</strong>
-                  <span class="education-list__school">Universiti Teknologi MARA Kuala Terengganu</span>
-                  <span class="education-list__detail">CGPA: 3.53</span>
-                </li>
-              </ul>
+            <aside class="about__col about__col--aside" aria-label="Experience, skills, and education">
+              <div class="about__card about__card--aside">
+                <section class="about__aside-section" aria-labelledby="about-exp">
+                  <h3 id="about-exp" class="about__subheading">Experience</h3>
+                  <ul class="education-list education-list--about">
+                    <li>
+                      <span class="education-list__years">Feb 2025 – present</span>
+                      <strong>Graphic designer</strong>
+                      <span class="education-list__school">OMAF Apparel</span>
+                      <span class="education-list__detail">Campaign and apparel graphics in step with sales and client needs.</span>
+                    </li>
+                    <li>
+                      <span class="education-list__years">Mar – Jun 2024</span>
+                      <strong>IT intern</strong>
+                      <span class="education-list__school">Asia Debut Technology</span>
+                      <span class="education-list__detail">Features, QA, and data migration across application releases.</span>
+                    </li>
+                    <li>
+                      <span class="education-list__years">Jul 2020 – Feb 2021</span>
+                      <strong>IT intern</strong>
+                      <span class="education-list__school">Pejabat Pengarah Tanah dan Galian Terengganu</span>
+                      <span class="education-list__detail">Helpdesk support and improving internal tools and workflows.</span>
+                    </li>
+                  </ul>
+                </section>
+                <section class="about__aside-section" aria-labelledby="about-skills">
+                  <h3 id="about-skills" class="about__subheading">Skills</h3>
+                  <ul class="skill-list">
+                    <li>Graphic &amp; layout</li>
+                    <li>Adobe PS / AI / PR</li>
+                    <li>Web: HTML, CSS, JS</li>
+                    <li>UI / UX</li>
+                    <li>Video editing</li>
+                    <li>Blender &amp; Unity</li>
+                    <li>Photography</li>
+                  </ul>
+                  <p class="about__languages">Malay (native) · English (professional)</p>
+                </section>
+                <section class="about__aside-section" aria-labelledby="about-edu">
+                  <h3 id="about-edu" class="about__subheading">Education</h3>
+                  <ul class="education-list education-list--about">
+                    <li>
+                      <span class="education-list__years">2022–2024</span>
+                      <strong>Bachelor of Computer Science (Hons.), Multimedia Computing</strong>
+                      <span class="education-list__school">Universiti Teknologi MARA Kuala Terengganu</span>
+                      <span class="education-list__detail">CGPA: 3.26</span>
+                    </li>
+                    <li>
+                      <span class="education-list__years">2019–2022</span>
+                      <strong>Diploma in Computer Science</strong>
+                      <span class="education-list__school">Universiti Teknologi MARA Kuala Terengganu</span>
+                      <span class="education-list__detail">CGPA: 3.53</span>
+                    </li>
+                  </ul>
+                </section>
+              </div>
             </aside>
           </div>
         </div>
@@ -388,19 +508,11 @@
           <p class="section__overline section__overline--on-dark">Contact</p>
           <h2 id="contact-title" class="contact__title">Let’s work together</h2>
           <p class="contact__text">
-            Available for full-time graphic design roles and relevant freelance. Reach out by email or WhatsApp — I’ll
-            respond as soon as I can.
+            Available for full-time graphic design roles and relevant freelance. Send a message by email — I’ll respond as
+            soon as I can.
           </p>
-          <div class="contact__channels">
-            <a class="contact__channel" href="mailto:amir.inbox720@gmail.com">
-              <span class="contact__channel-label">Email</span>
-              <span class="contact__channel-value">amir.inbox720@gmail.com</span>
-            </a>
-            <a class="contact__channel" href="tel:+601157011096">
-              <span class="contact__channel-label">Phone / WhatsApp</span>
-              <span class="contact__channel-value">+60 11-5701 1096</span>
-            </a>
-          </div>
+          <p class="contact__location">Based in Terengganu, Malaysia</p>
+          <a class="btn btn--mail" href="mailto:amir.inbox720@gmail.com">Email amir.inbox720@gmail.com</a>
         </div>
       </section>
     </main>
@@ -409,6 +521,21 @@
       <div class="site-footer__inner">
         <p class="site-footer__name">3A's</p>
         <p class="site-footer__role">Amir Asyraaf Aiman · Graphic &amp; digital designer · Multimedia computing</p>
+        <div class="site-footer__social" aria-label="LinkedIn">
+          <a
+            class="site-footer__social-link"
+            href="https://www.linkedin.com/in/amir-asyraaf-aiman-3837b5280/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <svg class="site-footer__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+        </div>
         <p class="site-footer__note">Portfolio · <span id="footer-year">2026</span></p>
       </div>
     </footer>

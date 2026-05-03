@@ -6,6 +6,13 @@
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
 
+  function closeNav() {
+    if (!header || !toggle) return;
+    header.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    toggle.setAttribute("aria-label", "Open menu");
+  }
+
   if (toggle && header && nav) {
     toggle.addEventListener("click", function () {
       var open = header.classList.toggle("is-open");
@@ -13,19 +20,60 @@
       toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     });
 
-    function closeNav() {
-      header.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
-      toggle.setAttribute("aria-label", "Open menu");
-    }
-
     nav.querySelectorAll("a[href^='#']").forEach(function (link) {
       link.addEventListener("click", closeNav);
     });
 
-    document.querySelectorAll(".work-jump a[href^='#']").forEach(function (link) {
+    document.querySelectorAll(".hero__tag-link[href^='#']").forEach(function (link) {
       link.addEventListener("click", closeNav);
     });
+  }
+
+  /* ----- Portfolio category filter ---------------------------------------- */
+  var workGrid = document.getElementById("work-grid");
+  var filterRoot =
+    document.querySelector("#work .work-jump") || document.querySelector(".section--work .work-jump");
+
+  if (filterRoot && workGrid) {
+    var projectBlocks = workGrid.querySelectorAll(".project-block[data-category]");
+
+    function setActiveTab(active) {
+      filterRoot.querySelectorAll("[data-filter]").forEach(function (tab) {
+        var on = tab === active;
+        tab.classList.toggle("is-active", on);
+        if (tab.tagName === "BUTTON") {
+          tab.setAttribute("aria-pressed", on ? "true" : "false");
+        }
+      });
+    }
+
+    function applyFilter(filter) {
+      projectBlocks.forEach(function (block) {
+        var cat = block.getAttribute("data-category");
+        var show = filter === "all" || cat === filter;
+        block.classList.toggle("is-filtered-out", !show);
+        if (show) {
+          block.removeAttribute("hidden");
+        } else {
+          block.setAttribute("hidden", "");
+        }
+      });
+    }
+
+    filterRoot.addEventListener("click", function (e) {
+      var tab = e.target && e.target.closest ? e.target.closest("[data-filter]") : null;
+      if (!tab || !filterRoot.contains(tab)) return;
+      e.preventDefault();
+      var f = tab.getAttribute("data-filter");
+      if (!f) return;
+      setActiveTab(tab);
+      applyFilter(f);
+      closeNav();
+    });
+
+    var defaultTab = filterRoot.querySelector('[data-filter="all"]');
+    if (defaultTab) setActiveTab(defaultTab);
+    applyFilter("all");
   }
 
   /* ----- Image lightbox ------------------------------------------------ */
@@ -41,7 +89,7 @@
   function resolveUrl(url) {
     try {
       return new URL(url, document.baseURI).href;
-    } catch (e) {
+    } catch (err) {
       return url;
     }
   }
@@ -74,6 +122,8 @@
   work.addEventListener("click", function (e) {
     var link = e.target.closest("a.gallery__item");
     if (!link || !work.contains(link)) return;
+    var pb = link.closest(".project-block");
+    if (pb && (pb.hasAttribute("hidden") || pb.classList.contains("is-filtered-out"))) return;
     e.preventDefault();
     var thumb = link.querySelector("img");
     openLightbox(link.href, thumb ? thumb.getAttribute("alt") : "");
