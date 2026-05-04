@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      (function () {
+        if (!/^https?:$/i.test(location.protocol)) return;
+        var p = location.pathname;
+        var basePath;
+        if (p.endsWith("/")) {
+          basePath = p;
+        } else if (/\.html?$/i.test(p)) {
+          basePath = p.replace(/\/[^/]+$/, "/");
+        } else {
+          basePath = p + "/";
+        }
+        if (basePath !== "/") {
+          var b = document.createElement("base");
+          b.href = basePath;
+          document.head.insertBefore(b, document.head.firstChild);
+        }
+      })();
+    </script>
+    <meta
+      name="description"
+      content="Contact Amir Asyraaf Aiman — graphic designer in Terengganu, Malaysia. Email, LinkedIn, portfolio, and resume."
+    />
+    <title>Connect · 3A's · Amir Asyraaf Aiman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Inter:wght@400;500;600&family=Outfit:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="logo logo--mono" href="index.html" aria-label="AAA Portfolio home">
+          <span class="logo__glyph" aria-hidden="true">AAA</span>
+        </a>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="connect.html" aria-current="page">Connect</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="connect-page section" aria-labelledby="connect-h1">
+        <header class="connect-page__intro section__head">
+          <p class="section__overline section__overline--dark">Contact</p>
+          <h1 id="connect-h1" class="section__title">Connect</h1>
+          <p class="section__intro connect-page__lede">
+            Open to full-time graphic design roles and selected freelance in apparel, events, and digital work. Reach out by
+            email or LinkedIn — include your timeline and what you need designed.
+          </p>
+        </header>
+
+        <div class="connect-page__grid">
+          <div class="contact__panel connect-page__panel">
+            <p class="section__overline section__overline--on-dark">Direct</p>
+            <h2 class="contact__title">Email</h2>
+            <p class="contact__text">Best for briefs, PDFs, and role enquiries. I typically reply within a few working days.</p>
+            <p class="contact__location">Based in Terengganu, Malaysia · Malaysian timezone (GMT+8)</p>
+            <a class="btn btn--mail" href="mailto:amir.inbox720@gmail.com">amir.inbox720@gmail.com</a>
+          </div>
+
+          <aside class="connect-page__aside" aria-label="More links">
+            <div class="connect-card">
+              <h2 class="connect-card__title">Profiles &amp; files</h2>
+              <ul class="connect-card__list">
+                <li>
+                  <a href="https://www.linkedin.com/in/amir-asyraaf-aiman-3837b5280/" target="_blank" rel="noopener noreferrer"
+                    >LinkedIn</a
+                  >
+                  <span class="connect-card__hint">Professional updates &amp; messaging</span>
+                </li>
+                <li>
+                  <a href="projects.html">Portfolio gallery</a>
+                  <span class="connect-card__hint">Posters, web, 3D, apparel</span>
+                </li>
+                <li>
+                  <a href="index.html#about">About &amp; resume (on site)</a>
+                  <span class="connect-card__hint">Experience, skills, education</span>
+                </li>
+                <li>
+                  <a href="cv.pdf" download="Amir-Asyraaf-Aiman-Resume.pdf">Resume PDF</a>
+                  <span class="connect-card__hint">Download for recruiters</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="connect-card connect-card--note">
+              <p class="connect-card__note">
+                Prefer the short version first? Use the <a href="index.html#connect">Connect strip</a> on the home page, then follow up here with assets or a full brief.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__name">3A's</p>
+        <p class="site-footer__role">Amir Asyraaf Aiman · Graphic designer · Multimedia computing</p>
+        <div class="site-footer__social" aria-label="LinkedIn">
+          <a
+            class="site-footer__social-link"
+            href="https://www.linkedin.com/in/amir-asyraaf-aiman-3837b5280/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn profile"
+          >
+            <svg class="site-footer__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+        </div>
+        <p class="site-footer__note">Portfolio · <span id="footer-year">2026</span></p>
+      </div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+  </body>
+</html>
